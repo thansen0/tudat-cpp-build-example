@@ -2,11 +2,19 @@ cmake_minimum_required(VERSION 3.28)
 project(my_project LANGUAGES CXX)
 
 set(TUDAT_BUILD_WITH_SOFA_INTERFACE OFF CACHE BOOL "Disable SOFA interface" FORCE)
+# set(TUDAT_BUILD_WITH_NRLMSISE00     OFF CACHE BOOL "" FORCE)
 
-add_subdirectory(extern/cspice-cmake ${CMAKE_BINARY_DIR}/cspice-build)
+
+# list(APPEND CMAKE_PREFIX_PATH
+#      "${CMAKE_SOURCE_DIR}/extern/cspice-build")
+# find_package(CSpice REQUIRED 1.0.0)
+
+add_subdirectory(extern/cspice-cmake
+                 ${CMAKE_BINARY_DIR}/extern/cspice-build)
 # list(APPEND CMAKE_PREFIX_PATH
 #      "${CMAKE_BINARY_DIR}/cspice-build")
 # find_package(CSpice   REQUIRED 1.0.0)
+add_library(CSpice::CSpice ALIAS cspice)
 
 
 add_subdirectory(extern/tudat-resources

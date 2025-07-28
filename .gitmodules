@@ -4,6 +4,6 @@
 [submodule "extern/tudat"]
 	path = extern/tudat
 	url = https://github.com/tudat-team/tudat.git
-[submodule "extern/cspice"]
-	path = extern/cspice
-	url = https://github.com/arturania/cspice.git
+[submodule "extern/cspice-cmake"]
+	path = extern/cspice-cmake
+	url = https://github.com/tudat-team/cspice-cmake.git

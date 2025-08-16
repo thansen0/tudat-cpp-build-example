@@ -13,4 +13,5 @@ The pull the submodules with
 
 ```
 git pull --recurse-submodules
+git submodule update --init --recursive
 ```

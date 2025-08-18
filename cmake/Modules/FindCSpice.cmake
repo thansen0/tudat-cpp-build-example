@@ -1,0 +1,5 @@
+set(CSpice_FOUND TRUE)
+set(CSpice_VERSION 1.0.0)
+if (NOT TARGET CSpice::CSpice)
+    add_library(CSpice::CSpice ALIAS cspice)
+endif()

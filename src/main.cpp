@@ -11,13 +11,13 @@ int main() {
 
     try
     {
-        // Load standard Spice kernels (de421.bsp etc.)
+        // load standard Spice kernels (de421.bsp etc.)
         tudat::spice_interface::loadStandardSpiceKernels();
 
-        // Epoch in seconds since J2000 (e.g. 1 day after J2000)
+        // epoch in seconds since J2000 (e.g. 1 day after J2000)
         double epoch = 86400.0;
 
-        // Get state of Earth relative to Sun at the epoch
+        // get state of Earth relative to Sun at the epoch
         Eigen::Vector6d earthState =
             tudat::spice_interface::getBodyCartesianStateAtEpoch(
                 "Earth",            // Target
@@ -31,6 +31,12 @@ int main() {
     catch (std::exception& e)
     {
         std::cerr << "Exception: " << e.what() << std::endl;
+    }
+    catch (...& e)
+    {
+        // Tudat probably only throws std::exception, but to know for sure
+        // I'd have to read the docs, and we all know that's not happening.
+        std::cerr << "Unknown exception occurred." << std::endl;
     }
 
     return 0;

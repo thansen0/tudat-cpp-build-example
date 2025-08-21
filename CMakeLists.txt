@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 project(my_project LANGUAGES C CXX)
+# attempting to fix issue with #include_next in tudat, although it didn't actually work
+include_directories(SYSTEM /usr/include /usr/include/x86_64-linux-gnu)
 
 set(TUDAT_BUILD_WITH_SOFA_INTERFACE OFF CACHE BOOL "Disable SOFA interface" FORCE)
 # set(CSPICE_BUILD_STATIC_LIBRARY OFF CACHE BOOL "Enable or disable static library" FORCE)
@@ -16,6 +18,11 @@ add_subdirectory(extern/nrlmsise-00-cmake)
 add_subdirectory(extern/tudat-resources)
 add_subdirectory(extern/tudat)
 include_directories(${TUDAT_ROOT_DIR}/include)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/extern/cspice-cmake/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/extern/nrlmsise-00-cmake/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/extern/tudat-resources/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/extern/tudat/include)
 
 find_package(Boost REQUIRED COMPONENTS filesystem system)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)

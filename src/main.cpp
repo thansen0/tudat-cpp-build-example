@@ -32,7 +32,7 @@ int main() {
     {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
-    catch (...& e)
+    catch (...)
     {
         // Tudat probably only throws std::exception, but to know for sure
         // I'd have to read the docs, and we all know that's not happening.
@@ -41,4 +41,3 @@ int main() {
 
     return 0;
 }
-

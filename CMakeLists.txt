@@ -42,6 +42,9 @@ set_source_files_properties(
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 add_executable(my_project src/main.cpp)
+target_compile_definitions(my_project PRIVATE
+    PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+)
 target_include_directories(my_project PRIVATE
     # tudat-resources generates config.hpp in its build tree.
     ${CMAKE_BINARY_DIR}/extern/tudat-resources/include
